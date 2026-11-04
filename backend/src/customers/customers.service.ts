@@ -5,6 +5,10 @@ import {
   Injectable,
   NotFoundException,
 } from "@nestjs/common";
+import type {
+  PaginatedModel,
+  PaginationModel,
+} from "../shared/models/pagination.model";
 import { CustomersRepository } from "./customers.repository";
 import type {
   BikeSellModel,
@@ -29,8 +33,8 @@ export class CustomersService {
     private readonly repository: CustomersRepository,
   ) {}
 
-  findAll(): Promise<CustomerModel[]> {
-    return this.repository.findAll();
+  findAll(pagination: PaginationModel): Promise<PaginatedModel<CustomerModel>> {
+    return this.repository.findAll(pagination);
   }
 
   async findById(id: string): Promise<CustomerModel> {

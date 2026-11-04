@@ -1,4 +1,8 @@
-import { ContactsOutlined, ShoppingOutlined } from "@ant-design/icons";
+import {
+  ContactsOutlined,
+  ShoppingOutlined,
+  TagOutlined,
+} from "@ant-design/icons";
 import { Card, Col, Row, Space } from "antd";
 import Paragraph from "antd/es/typography/Paragraph";
 import Title from "antd/es/typography/Title";
@@ -17,13 +21,13 @@ export const HomePage = () => {
       <div>
         <Title level={2}>Welcome to Bikez.ai</Title>
         <Paragraph>
-          Manage your bike shop's customers and keep track of every bike they
-          bought.
+          Manage your bike shop's customers and catalogue, and keep track of
+          every bike they bought.
         </Paragraph>
       </div>
 
       <Row gutter={[16, 16]}>
-        <Col xs={24} md={12}>
+        <Col xs={24} md={8}>
           <Card
             title={
               <Space>
@@ -42,7 +46,26 @@ export const HomePage = () => {
             </ButtonLink>
           </Card>
         </Col>
-        <Col xs={24} md={12}>
+        <Col xs={24} md={8}>
+          <Card
+            title={
+              <Space>
+                <TagOutlined />
+                Bikes
+              </Space>
+            }
+            style={{ height: "100%" }}
+          >
+            <Paragraph>
+              Browse the bike catalogue, add new models, update their details
+              and prices, and remove the ones that were never sold.
+            </Paragraph>
+            <ButtonLink to="/bikes" type="primary">
+              See bikes
+            </ButtonLink>
+          </Card>
+        </Col>
+        <Col xs={24} md={8}>
           <Card
             title={
               <Space>

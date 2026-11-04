@@ -58,8 +58,10 @@ describe("CustomersService", () => {
       lastName: "Martin",
       email: "alice@example.com",
     });
-    repository.findAll.mockResolvedValue([customer]);
-    expect(await service.findAll()).toEqual([customer]);
+    const page = { totalCount: 1, items: [customer] };
+    repository.findAll.mockResolvedValue(page);
+    expect(await service.findAll({ page: 1, limit: 10 })).toEqual(page);
+    expect(repository.findAll).toHaveBeenCalledWith({ page: 1, limit: 10 });
   });
 
   it("returns 404 for a missing customer and does not query purchases", async () => {
